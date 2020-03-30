@@ -14,17 +14,19 @@ const setMovieData = (movieIndex, moviePrice) => {
 };
 
 // Get data from localstorage
-function populateUi(){
-  const selectedSeats= JSON.parse(localStorage.getItem('selectedSeats'));
+function populateUi() {
+  const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
   const movieIndex = localStorage.getItem('selectedMovie');
-  const moviePrice = localStorage.getItem('selectedMoviePrice');
 
-  if(selectedSeats !==null && selectedSeats.length>0){
-    seats.forEach((seat,index)=>{
-        if(selectedSeats.indexOf(index)>-1){
-            seat.classList.add('selected')
-        }
-    })
+  if (selectedSeats !== null && selectedSeats.length > 0) {
+    seats.forEach((seat, index) => {
+      if (selectedSeats.indexOf(index) > -1) {
+        seat.classList.add('selected');
+      }
+    });
+  }
+  if (movieIndex !== null) {
+    movieSelect.selectedIndex = movieIndex;
   }
 }
 
@@ -53,3 +55,7 @@ container.addEventListener('click', e => {
     updatedSelectedCount();
   }
 });
+
+// Initial Count and total set
+
+updatedSelectedCount();
